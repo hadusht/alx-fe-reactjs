@@ -1,4 +1,5 @@
-import WelcomeMessage from "./WelcomeMessage";
+import WelcomeMessage from "./components/WelcomeMessage";
+
 
 
 
