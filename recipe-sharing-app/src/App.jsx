@@ -50,4 +50,24 @@ function App() {
   )
 }
 
+
+<div style={{ padding: "20px" }}>
+        <h1>Recipe Sharing App</h1>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <RecipeList />
+                <FavoritesList />
+                <RecommendationsList />
+              </>
+            }
+          />
+          <Route path="/recipes/:id" element={<RecipeDetails />} />
+        </Routes>
+      </div>
+    
+
+
 export default App

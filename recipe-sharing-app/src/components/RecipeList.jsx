@@ -25,5 +25,39 @@ const RecipeList = () => {
     </div>
   );
 };
+// src/components/RecipeList.jsx
+
+
+
+
+
+  const recipes = useRecipeStore((state) => state.recipes);
+  const favorites = useRecipeStore((state) => state.favorites);
+  const addFavorite = useRecipeStore((state) => state.addFavorite);
+  const removeFavorite = useRecipeStore((state) => state.removeFavorite);
+
+ 
+    <div>
+      <h2>Recipes</h2>
+      <ul>
+        {recipes.map((recipe) => {
+          const isFavorite = favorites.includes(recipe.id);
+          return (
+            <li key={recipe.id} style={{ marginBottom: "15px" }}>
+              <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
+              <p>{recipe.description}</p>
+              {isFavorite ? (
+                <button onClick={() => removeFavorite(recipe.id)}>Remove from Favorites</button>
+              ) : (
+                <button onClick={() => addFavorite(recipe.id)}>Add to Favorites</button>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+
+
 
 export default RecipeList;
+
