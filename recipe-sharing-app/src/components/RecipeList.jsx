@@ -1,5 +1,5 @@
 // RecipeList component
-  import { useRecipeStore } from './recipeStore';
+  import { useRecipeStore } from './RecipeList';
 
   const RecipeList = () => {
     const recipes = useRecipeStore(state => state.recipes);
@@ -15,3 +15,4 @@
       </div>
     );
   };
+   export default RecipeList
