@@ -20,3 +20,8 @@ export default function SearchBar({ onSearch }) {
     </form>
   );
 }
+const styles = {
+  form: { display: "flex", gap: "10px", marginBottom: "20px" },
+  input: { flex: 1, padding: "8px", fontSize: "16px" },
+  button: { padding: "8px 16px", fontSize: "16px", cursor: "pointer" },
+};
