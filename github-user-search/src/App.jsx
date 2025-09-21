@@ -17,25 +17,7 @@ function App() {
     }
   };
 
-  return (
-    <div style={{ padding: "20px" }}>
-      <h1>GitHub User Search</h1>
-      <Search onSearch={handleSearch} />
-
-      {error && <p style={{ color: "red" }}>{error}</p>}
-
-      {user && (
-        <div style={{ marginTop: "20px" }}>
-          <h2>{user.login}</h2>
-          <img src={user.avatar_url} alt={user.login} width={120} />
-          <p>{user.bio || "No bio available"}</p>
-          <a href={user.html_url} target="_blank" rel="noreferrer">
-            View Profile
-          </a>
-        </div>
-      )}
-    </div>
-  );
+  return <Search />;
 }
 
 export default App;
