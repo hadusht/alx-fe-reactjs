@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Search from "./components/SearchBar";
+import Search from "./components/Search.jsx";
 import { fetchUserData } from "./services/githubService";
 
 function App() {
