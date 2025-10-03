@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [recipes, setRecipes] = useState([]);
@@ -23,39 +24,28 @@ function HomePage() {
       {/* Centered Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         {recipes.map((recipe) => (
-          <div
+          <Link
             key={recipe.id}
-            className="w-80 bg-white rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 overflow-hidden"
+            to={`/recipe/${recipe.id}`} // Navigate to RecipeDetail
+            className="w-80"
           >
-            {/* Recipe Image */}
-            <img
-              src={recipe.image}
-              alt={recipe.title}
-              className="w-full h-48 object-cover"
-            />
+            <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transform hover:scale-105 transition duration-300 overflow-hidden">
+              {/* Recipe Image */}
+              <img
+                src={recipe.image}
+                alt={recipe.title}
+                className="w-full h-48 object-cover"
+              />
 
-            {/* Card Content */}
-            <div className="p-4">
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">
-                {recipe.title}
-              </h2>
-              <p className="text-gray-600 text-sm">{recipe.summary}</p>
-
-              {/* Optional Ingredients */}
-              {recipe.ingredients?.length > 0 && (
-                <div className="mt-3">
-                  <h3 className="font-medium text-gray-800 mb-1">
-                    Ingredients:
-                  </h3>
-                  <ul className="list-disc list-inside text-gray-600 text-sm">
-                    {recipe.ingredients.map((ing, i) => (
-                      <li key={i}>{ing}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              {/* Card Content */}
+              <div className="p-4">
+                <h2 className="text-xl font-semibold text-gray-900 mb-2">
+                  {recipe.title}
+                </h2>
+                <p className="text-gray-600 text-sm">{recipe.summary}</p>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
