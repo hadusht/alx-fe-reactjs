@@ -20,6 +20,12 @@ function HomePage() {
       <h1 className="text-4xl font-bold text-center mb-10 text-gray-800">
         🍴 Recipe Sharing Platform
       </h1>
+      <Link
+        to="/add-recipe"
+        className="mb-6 px-6 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition"
+      >
+        ➕ Add Recipe
+      </Link>
 
       {/* Centered Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
