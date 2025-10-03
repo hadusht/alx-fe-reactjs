@@ -46,8 +46,8 @@ function AddRecipeForm() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6 flex flex-col items-center">
-      {/* Back to Home OUTSIDE the form */}
-      <div className="w-full max-w-lg mb-4">
+      {/* Back to Home */}
+      <div className="w-full max-w-lg mb-4 md:max-w-2xl">
         <Link
           to="/"
           className="inline-block text-blue-600 hover:text-blue-800 font-semibold transition duration-300"
@@ -59,9 +59,9 @@ function AddRecipeForm() {
       {/* The Form */}
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-lg bg-white shadow-lg rounded-xl p-8 space-y-6"
+        className="w-full max-w-lg md:max-w-2xl bg-white shadow-lg rounded-xl p-6 md:p-10 space-y-6"
       >
-        <h2 className="text-2xl font-bold text-gray-800 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 text-center">
           ➕ Add a New Recipe
         </h2>
 
@@ -131,7 +131,7 @@ function AddRecipeForm() {
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300"
+          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 md:py-3 md:text-lg"
         >
           Submit Recipe
         </button>
