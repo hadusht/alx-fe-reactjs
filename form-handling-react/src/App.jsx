@@ -1,5 +1,5 @@
 import React from "react";
-import RegistrationForm from "./components/RegistrationForm";
+import RegistrationForm from "./components/RegistrationForm.jsx";
 // import FormikForm from "./components/formikForm"; // Uncomment to test Formik version
 
 function App() {
