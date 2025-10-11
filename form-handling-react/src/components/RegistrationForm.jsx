@@ -76,4 +76,24 @@ function RegistrationForm() {
           <input
             type="password"
             value={password}
-            onChange={(e) =>
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter password"
+            className="border rounded p-2"
+          />
+          {errors.password && (
+            <p className="text-red-500 text-sm">{errors.password}</p>
+          )}
+        </div>
+
+        <button
+          type="submit"
+          className="bg-gray-800 text-white rounded py-2 hover:bg-gray-700 transition"
+        >
+          Register
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export default RegistrationForm;
