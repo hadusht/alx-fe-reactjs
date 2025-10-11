@@ -1,5 +1,5 @@
 import React from "react";
-import FormikForm from "./components/formikForm.jsx";
+import FormikForm from "./components/formikForm";
 
 function App() {
   return <FormikForm />;
