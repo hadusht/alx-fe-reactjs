@@ -1,34 +1,15 @@
-// src/components/RegistrationForm.jsx
 import React, { useState } from "react";
 
 function RegistrationForm() {
-  // Step 1: Form state (controlled inputs)
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
-  // Step 2: Validation & feedback state
+  // Step 1: Define state variables for controlled inputs
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
 
-  // Step 3: Handle input changes (controlled components)
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  // Step 4: Handle form submission
+  // Step 2: Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    setError("");
-    setSuccess("");
-
-    const { username, email, password } = formData;
 
     // Basic validation
     if (!username || !email || !password) {
@@ -36,80 +17,71 @@ function RegistrationForm() {
       return;
     }
 
-    // ✅ If valid
-    setSuccess(`Registration successful! Welcome, ${username}.`);
-    setFormData({ username: "", email: "", password: "" }); // clear form
+    setError("");
+    console.log("Form Submitted:", { username, email, password });
+
+    // Reset form fields
+    setUsername("");
+    setEmail("");
+    setPassword("");
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 p-4">
-      <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center mb-4 text-gray-800 dark:text-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white shadow-md rounded-lg p-6 w-full max-w-sm flex flex-col gap-4"
+      >
+        <h2 className="text-2xl font-bold text-center text-gray-800">
           User Registration
         </h2>
 
-        {error && (
-          <div className="bg-red-100 text-red-700 p-2 rounded mb-2 text-center">
-            {error}
-          </div>
-        )}
-        {success && (
-          <div className="bg-green-100 text-green-700 p-2 rounded mb-2 text-center">
-            {success}
-          </div>
-        )}
+        {error && <p className="text-red-500 text-center">{error}</p>}
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <div>
-            <label className="block text-gray-700 dark:text-gray-200 mb-1">
-              Username
-            </label>
-            <input
-              type="text"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              placeholder="Enter your username"
-              className="border rounded w-full p-2 dark:bg-gray-700 dark:text-white"
-            />
-          </div>
+        {/* Username Field */}
+        <div className="flex flex-col">
+          <label className="text-sm font-medium text-gray-700">Username</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)} // controlled
+            placeholder="Enter username"
+            className="border rounded p-2"
+          />
+        </div>
 
-          <div>
-            <label className="block text-gray-700 dark:text-gray-200 mb-1">
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              className="border rounded w-full p-2 dark:bg-gray-700 dark:text-white"
-            />
-          </div>
+        {/* Email Field */}
+        <div className="flex flex-col">
+          <label className="text-sm font-medium text-gray-700">Email</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)} // controlled
+            placeholder="Enter email"
+            className="border rounded p-2"
+          />
+        </div>
 
-          <div>
-            <label className="block text-gray-700 dark:text-gray-200 mb-1">
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Enter your password"
-              className="border rounded w-full p-2 dark:bg-gray-700 dark:text-white"
-            />
-          </div>
+        {/* Password Field */}
+        <div className="flex flex-col">
+          <label className="text-sm font-medium text-gray-700">Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)} // controlled
+            placeholder="Enter password"
+            className="border rounded p-2"
+          />
+        </div>
 
-          <button
-            type="submit"
-            className="bg-blue-600 text-white rounded py-2 hover:bg-blue-700 transition"
-          >
-            Register
-          </button>
-        </form>
-      </div>
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="bg-gray-800 text-white rounded py-2 hover:bg-gray-700 transition"
+        >
+          Register
+        </button>
+      </form>
     </div>
   );
 }
