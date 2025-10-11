@@ -12,7 +12,7 @@ const validationSchema = Yup.object({
 
 function FormikForm() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-sm flex flex-col gap-4">
         <h2 className="text-2xl font-bold text-center text-gray-800">
           Registration (Formik)
@@ -22,12 +22,13 @@ function FormikForm() {
           initialValues={{ username: "", email: "", password: "" }}
           validationSchema={validationSchema}
           onSubmit={(values, { resetForm }) => {
-            console.log("Form submitted:", values);
+            console.log("Formik Form submitted:", values);
             resetForm();
           }}
         >
           {({ isSubmitting }) => (
             <Form className="flex flex-col gap-4">
+              {/* Username */}
               <div>
                 <label className="text-sm font-medium text-gray-700">
                   Username
@@ -35,7 +36,6 @@ function FormikForm() {
                 <Field
                   type="text"
                   name="username"
-                  placeholder="Enter username"
                   className="border rounded p-2 w-full mt-1"
                 />
                 <ErrorMessage
@@ -45,6 +45,7 @@ function FormikForm() {
                 />
               </div>
 
+              {/* Email */}
               <div>
                 <label className="text-sm font-medium text-gray-700">
                   Email
@@ -52,7 +53,6 @@ function FormikForm() {
                 <Field
                   type="email"
                   name="email"
-                  placeholder="Enter email"
                   className="border rounded p-2 w-full mt-1"
                 />
                 <ErrorMessage
@@ -62,6 +62,7 @@ function FormikForm() {
                 />
               </div>
 
+              {/* Password */}
               <div>
                 <label className="text-sm font-medium text-gray-700">
                   Password
@@ -69,7 +70,6 @@ function FormikForm() {
                 <Field
                   type="password"
                   name="password"
-                  placeholder="Enter password"
                   className="border rounded p-2 w-full mt-1"
                 />
                 <ErrorMessage

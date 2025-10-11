@@ -1,8 +1,10 @@
 import React from "react";
-import FormikForm from "./components/formikForm";
+import RegistrationForm from "./components/RegistrationForm";
+// import FormikForm from "./components/formikForm"; // Uncomment to test Formik version
 
 function App() {
-  return <FormikForm />;
+  return <RegistrationForm />;
+  // return <FormikForm />; // Switch to this when testing Formik
 }
 
 export default App;
