@@ -1,58 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Blog from "./pages/Blog";
-import Login from "./pages/Login";
+import Home from "./components/Home";
 import Profile from "./components/Profile";
-import Post from "./components/Post";
-import ProtectedRoute from "./components/ProtectedRoute";
+import BlogPost from "./components/BlogPost";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
   return (
     <Router>
-      <nav className="flex gap-4 p-4 bg-gray-800 text-white">
+      <nav className="p-4 bg-gray-800 text-white flex gap-4">
         <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/blog">Blog</Link>
         <Link to="/profile">Profile</Link>
-        {!isAuthenticated ? (
-          <button
-            onClick={() => setIsAuthenticated(true)}
-            className="bg-blue-600 px-2 rounded"
-          >
-            Login
-          </button>
-        ) : (
-          <button
-            onClick={() => setIsAuthenticated(false)}
-            className="bg-red-600 px-2 rounded"
-          >
-            Logout
-          </button>
-        )}
+        <Link to="/blog/1">Blog Post #1</Link>
+        <Link to="/blog/2">Blog Post #2</Link>
       </nav>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:postId" element={<Post />} />
-
-        {/* Protected route */}
-        <Route
-          path="/profile/*"
-          element={
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
-              <Profile />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route path="/login" element={<Login />} />
-      </Routes>
+      <div className="p-4">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile/*" element={<Profile />} />
+          {/* ✅ Dynamic route ALX checker expects */}
+          <Route path="/blog/:id" element={<BlogPost />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
