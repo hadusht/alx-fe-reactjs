@@ -12,8 +12,9 @@ const fetchPosts = async () => {
 function PostsComponent() {
   const {
     data: posts,
-    error,
     isLoading,
+    isError,
+    error,
     isFetching,
     refetch,
   } = useQuery({
@@ -24,7 +25,7 @@ function PostsComponent() {
   });
 
   if (isLoading) return <p>Loading posts...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (isError) return <p>Error: {error.message}</p>;
 
   return (
     <div className="max-w-3xl mx-auto bg-white p-4 rounded-lg shadow-md">
