@@ -20,7 +20,9 @@ function PostsComponent() {
   } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
-    staleTime: 30000,
+    staleTime: 30000, // Data stays fresh for 30s
+    cacheTime: 60000, // Data stays cached for 1 minute
+    keepPreviousData: true, // Keeps old data visible during refetch
     refetchOnWindowFocus: false,
   });
 
