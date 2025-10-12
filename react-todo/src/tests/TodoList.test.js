@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import TodoList from "../TodoList";
 
-describe("TodoList Component", () => {
+export default function TodoList() {
   test("renders initial todos", () => {
     render(<TodoList />);
     expect(screen.getByText("Learn React")).toBeInTheDocument();
@@ -41,4 +41,4 @@ describe("TodoList Component", () => {
     fireEvent.click(deleteButton);
     expect(screen.queryByText("Build a Todo App")).not.toBeInTheDocument();
   });
-});
+}
